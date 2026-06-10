@@ -23,15 +23,35 @@ export default defineConfig(() => {
           description: 'Śpiewnik Chrześcijańskiego Kościoła Ewangelicznego',
           theme_color: '#ffffff',
           icons: [
+             {
+              src: 'favicon-16x16.png',
+              sizes: '16x16',
+              type: 'image/png'
+            },
             {
-              src: 'logo.jpg',
+              src: 'favicon-32x32.png',
+              sizes: '32x32',
+              type: 'image/png'
+            },
+            {
+              src: 'apple-touch-icon.png',
+              sizes: '180x180',
+              type: 'image/png'
+            },
+            {
+              src: 'android-chrome-192x192.png',
               sizes: '192x192',
-              type: 'image/jpeg'
+              type: 'image/png'
+            },
+            {
+              src: 'android-chrome-512x512.png',
+              sizes: '512x512',
+              type: 'image/png'
             },
             {
               src: 'logo.jpg',
-              sizes: '512x512',
-              type: 'image/jpeg'
+              sizes: '2048x2048',
+              type: 'image/png'
             }
           ]
         },
