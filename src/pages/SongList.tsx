@@ -134,7 +134,7 @@ export function SongList() {
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm pb-4 pt-4 -mt-4 -mx-4 px-4 sm:-mx-6 sm:px-6 mb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex gap-2 flex-1">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
