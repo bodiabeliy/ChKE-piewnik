@@ -16,7 +16,14 @@ export default defineConfig(() => {
           type: "module",
           navigateFallback: "index.html",
         },
-        includeAssets: [],
+        includeAssets: [
+          "logo.jpg",
+          "favicon-16x16.png",
+          "favicon-32x32.png",
+          "apple-touch-icon.png",
+          "android-chrome-192x192.png",
+          "android-chrome-512x512.png",
+        ],
         manifest: {
           name: "ChKE Śpiewnik",
           short_name: "Śpiewnik",
@@ -52,56 +59,57 @@ export default defineConfig(() => {
               src: "logo.jpg",
               sizes: "2048x2048",
               type: "image/jpeg",
+              purpose: "any maskable",
             },
           ],
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}'],
-          navigateFallback: '/index.html',
+          globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}"],
+          navigateFallback: "/index.html",
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-              handler: 'CacheFirst',
+              handler: "CacheFirst",
               options: {
-                cacheName: 'google-fonts-cache',
+                cacheName: "google-fonts-cache",
                 expiration: {
                   maxEntries: 10,
-                  maxAgeSeconds: 60 * 60 * 24 * 365
+                  maxAgeSeconds: 60 * 60 * 24 * 365,
                 },
                 cacheableResponse: {
-                  statuses: [0, 200]
-                }
-              }
+                  statuses: [0, 200],
+                },
+              },
             },
             {
               urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-              handler: 'CacheFirst',
+              handler: "CacheFirst",
               options: {
-                cacheName: 'gstatic-fonts-cache',
+                cacheName: "gstatic-fonts-cache",
                 expiration: {
                   maxEntries: 10,
-                  maxAgeSeconds: 60 * 60 * 24 * 365
+                  maxAgeSeconds: 60 * 60 * 24 * 365,
                 },
                 cacheableResponse: {
-                  statuses: [0, 200]
-                }
-              }
+                  statuses: [0, 200],
+                },
+              },
             },
             {
-              urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
-              handler: 'StaleWhileRevalidate',
+              urlPattern: ({ url }) => url.pathname.startsWith("/api/"),
+              handler: "StaleWhileRevalidate",
               options: {
-                cacheName: 'api-cache',
+                cacheName: "api-cache",
                 expiration: {
                   maxEntries: 2000,
-                  maxAgeSeconds: 60 * 60 * 24 * 30 // 30 dni
+                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 dni
                 },
                 cacheableResponse: {
-                  statuses: [0, 200]
-                }
-              }
-            }
-          ]
+                  statuses: [0, 200],
+                },
+              },
+            },
+          ],
         },
       }),
     ],

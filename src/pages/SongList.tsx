@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, Loader2, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useFavorites } from '../hooks/useFavorites';
+import { useBackgroundPrefetch } from '../hooks/useBackgroundPrefetch';
 
 export interface Song {
   id: string;
@@ -17,6 +18,9 @@ export function SongList() {
   const [search, setSearch] = useState('');
   const { favorites, toggleFavorite } = useFavorites();
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+
+  // Start background prefetch for offline availability
+  useBackgroundPrefetch(songs);
 
   useEffect(() => {
     fetch('/api/songs')
