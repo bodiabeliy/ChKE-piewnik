@@ -283,8 +283,11 @@ app.post('/api/admin/refresh', async (req, res) => {
 });
 
 async function startServer() {
+  // Determine if we are in production based on env or running the compiled cjs file
+  const isProduction = process.env.NODE_ENV === "production" || process.argv[1]?.endsWith('.cjs');
+
   // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
+  if (!isProduction) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
